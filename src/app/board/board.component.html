@@ -1,0 +1,128 @@
+<div class="task-board">
+  <!-- Task columns -->
+  <div class="task-category-container">
+    <div
+      *ngFor="let category of ['To do', 'In progress', 'Await feedback', 'Done']"
+      class="task-category"
+    >
+      <div class="task-headline-container">
+        <h2>{{ category }}</h2>
+        <span class="task-headline-counter">
+          {{ getTasksByCategory(category).length }}
+        </span>
+      </div>
+      <div
+        class="task-drop-zone"
+        (dragover)="onDragOver($event)"
+        (drop)="onDrop($event, category)"
+      >
+        <div
+          *ngFor="let task of getTasksByCategory(category)"
+          class="task"
+          (click)="showTaskDetails(task)"
+          (dragstart)="onDragStart($event, task.taskId)"
+          draggable="true"
+        >
+          <p>{{ task.taskCategory }}</p>
+          <h2>{{ task.taskTitle }}</h2>
+          <p>{{ task.taskDescription }}</p>
+          <p><strong>Due Date:</strong> {{ task.taskDate | date }}</p>
+          <p><strong>Priority:</strong> {{ task.taskPriority }}</p>
+
+          <!-- Assigned contacts display initials with background color -->
+          <div class="assigned-contacts">
+            <div 
+              *ngFor="let contact of task.taskAssignment" 
+              class="contact-initials" 
+              [ngStyle]="{'background-color': contact.color}"
+              title="{{ contact.firstName }} {{ contact.lastName }}"
+            >
+              {{ getInitials(contact.firstName, contact.lastName) }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Details Modal -->
+  <div
+    class="task-details-modal-background"
+    *ngIf="taskDetailsVisible && !editingTask"
+    (click)="closeTaskDetails()"
+  >
+    <mat-card class="task-details-modal" (click)="$event.stopPropagation()">
+      <div *ngIf="selectedTask">
+        <h2>{{ selectedTask?.taskTitle }}</h2>
+        <p>{{ selectedTask?.taskDescription }}</p>
+        <p><strong>Due Date:</strong> {{ selectedTask?.taskDate | date }}</p>
+        <p><strong>Priority:</strong> {{ selectedTask?.taskPriority }}</p>
+
+        <p><strong>Assigned Contacts:</strong></p>
+        <div class="assigned-contacts">
+          <div
+            *ngFor="let contact of selectedTask.taskAssignment"
+            class="contact-initials"
+            [ngStyle]="{'background-color': contact.color}"
+            title="{{ contact.firstName }} {{ contact.lastName }}"
+          >
+            {{ getInitials(contact.firstName, contact.lastName) }}
+          </div>
+        </div>
+
+        <button (click)="editTask()">Edit Task</button>
+        <button (click)="closeTaskDetails()">Close</button>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Task Edit Modal -->
+  <div class="task-details-modal-background" *ngIf="editingTask" (click)="cancelEditTask()">
+    <mat-card class="task-details-modal" (click)="$event.stopPropagation()">
+      <h2>Edit Task</h2>
+
+      <label for="taskTitle">Title:</label>
+      <input [(ngModel)]="selectedTask.taskTitle" id="taskTitle" type="text" />
+
+      <label for="taskDescription">Description:</label>
+      <textarea [(ngModel)]="selectedTask.taskDescription" id="taskDescription"></textarea>
+
+      <label for="taskDate">Due Date:</label>
+      <input [(ngModel)]="taskDateString" id="taskDate" type="date" />
+
+      <label for="taskPriority">Priority:</label>
+      <select [(ngModel)]="selectedTask.taskPriority" id="taskPriority" class="styled-dropdown">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <label for="taskCategory">Category:</label>
+      <select [(ngModel)]="selectedTask.taskCategory" id="taskCategory" class="styled-dropdown">
+        <option *ngFor="let category of taskCategoryOptions" [value]="category">{{ category }}</option>
+      </select>
+
+      <label for="assignedContacts">Assigned Contacts:</label>
+      <div id="assignedContacts">
+        <div *ngFor="let contact of allContacts">
+          <label>
+            <input 
+              type="checkbox" 
+              [value]="contact.eMail"
+              (change)="toggleContactSelection(contact.eMail)"
+              [checked]="isContactAssigned(contact.eMail)"
+            />
+            <!-- Show initials with color for editing -->
+            <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">
+              {{ getInitials(contact.firstName, contact.lastName) }}
+            </div>
+            {{ contact.firstName }} {{ contact.lastName }}
+          </label>
+        </div>
+      </div>
+
+      <button (click)="saveTaskChanges()">Save</button>
+      <button (click)="cancelEditTask()">Cancel</button>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.summary-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 100px 16px 16px 16px;
+  }
+  
+  .summary-tile {
+    background: #f0f0f0;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .summary-tile mat-icon {
+    font-size: 40px;
+    margin-right: 16px;
+  }
+  
+  .summary-info h3 {
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .summary-info p {
+    margin: 0;
+  }
+  

@@ -1,0 +1,122 @@
+<section class="dialog-content">
+    <h2 mat-dialog-title>Add Contact</h2>
+    <section mat-dialog-content>
+      <form #contactForm="ngForm">
+        <div class="input-container">
+          <div class="input-name-container">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input
+                [(ngModel)]="contact.firstName"
+                [ngModelOptions]="{ standalone: true }"
+                name="firstName"
+                matInput
+                placeholder="First Name"
+                required
+                #firstName="ngModel"
+              />
+              <mat-error *ngIf="firstName.invalid && firstName.touched">
+                First Name is required.
+              </mat-error>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input
+                [(ngModel)]="contact.lastName"
+                [ngModelOptions]="{ standalone: true }"
+                name="lastName"
+                matInput
+                placeholder="Last Name"
+                required
+                #lastName="ngModel"
+              />
+              <mat-error *ngIf="lastName.invalid && lastName.touched">
+                Last Name is required.
+              </mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="input-email-container">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  [(ngModel)]="contact.eMail"
+                  [ngModelOptions]="{ standalone: true }"
+                  name="eMail"
+                  matInput
+                  placeholder="Email"
+                  required
+                  email
+                  #eMail="ngModel"
+                />
+                <mat-error *ngIf="eMail.invalid && eMail.touched">
+                  Please enter a valid email address (e.g. contact&#64;example.com).
+                </mat-error>
+              </mat-form-field>
+          </div>
+  
+          <div class="input-date-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Birth Date</mat-label>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <input
+                [(ngModel)]="birthDate"
+                [ngModelOptions]="{ standalone: true }"
+                class="datepicker-input"
+                matInput
+                placeholder="Birth Date"
+                [matDatepicker]="picker1"
+                #birthDate="ngModel"
+              />
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+          </div>
+  
+          <div class="input-address-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input
+                [(ngModel)]="contact.street"
+                [ngModelOptions]="{ standalone: true }"
+                matInput
+                placeholder="Street + House Nr."
+              />
+            </mat-form-field>
+          </div>
+  
+          <div class="input-location-container">
+            <mat-form-field appearance="outline">
+              <mat-label>ZIP Code</mat-label>
+              <input
+                [(ngModel)]="contact.zipCode"
+                [ngModelOptions]="{ standalone: true }"
+                matInput
+                placeholder="ZIP Code"
+              />
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input
+                [(ngModel)]="contact.city"
+                [ngModelOptions]="{ standalone: true }"
+                matInput
+                placeholder="City"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+    </section>
+  
+    <div class="add-contact-button-container" mat-dialog-actions>
+      <button mat-button (click)="dialogRef.close()">
+        Cancel
+      </button>
+  
+      <button (click)="saveContact()" mat-button cdkFocusInitial [disabled]="contactForm.invalid">
+        Save
+      </button>
+    </div>
+  </section>

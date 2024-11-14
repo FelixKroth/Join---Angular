@@ -1,0 +1,53 @@
+<div class="summary-container">
+    <div class="summary-tile">
+      <mat-icon>edit</mat-icon>
+      <div class="summary-info">
+        <h3>Tasks To Do</h3>
+        <p>{{ getTasksByCategory('To do').length }}</p>
+      </div>
+    </div>
+  
+    <div class="summary-tile">
+      <mat-icon>check</mat-icon>
+      <div class="summary-info">
+        <h3>Tasks Done</h3>
+        <p>{{ getTasksByCategory('Done').length }}</p>
+      </div>
+    </div>
+  
+    <div class="summary-tile">
+      <mat-icon>urgent</mat-icon>
+      <div class="summary-info">
+        <h3>High Priority Tasks</h3>
+        <p>
+          {{ getHighPriorityTasks().length }} - 
+          Nearest Due: {{ getNearestDueDateForHighPriority() | date:'shortDate' }}
+        </p>
+      </div>
+    </div>
+  
+    <div class="summary-tile">
+      <mat-icon>assignment</mat-icon>
+      <div class="summary-info">
+        <h3>Total Tasks</h3>
+        <p>{{ totalTasks }}</p>
+      </div>
+    </div>
+  
+    <div class="summary-tile">
+      <mat-icon>access_time</mat-icon>
+      <div class="summary-info">
+        <h3>Tasks In Progress</h3>
+        <p>{{ getTasksByCategory('In progress').length }}</p>
+      </div>
+    </div>
+  
+    <div class="summary-tile">
+      <mat-icon>feedback</mat-icon>
+      <div class="summary-info">
+        <h3>Tasks Awaiting Feedback</h3>
+        <p>{{ getTasksByCategory('Await feedback').length }}</p>
+      </div>
+    </div>
+  </div>
+  

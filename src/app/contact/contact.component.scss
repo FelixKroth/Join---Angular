@@ -1,0 +1,71 @@
+.add-contact-button {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}
+
+mat-card {
+    padding: 0;
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        
+        &:last-child {
+            border-bottom: 0;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.04)
+        }
+
+        &:first-child:hover {
+            background-color: unset;
+            cursor: unset;
+        }
+
+        td {
+            &:first-child {
+                padding: 32px 0px 32px 32px;
+            }
+        }
+
+        th {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: start;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+            &:first-child {
+                padding: 32px 0px 32px 32px;
+            }
+
+            &:hover { 
+                background-color: unset;
+                cursor: unset;
+            }
+        }
+    }
+
+    .initials-column {
+        text-align: center;
+    }
+
+    .user-initials {
+        color: white;
+        font-size: 18px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,65 @@
+.contact-detail-header {
+    position: relative;
+    min-height: 250px;
+    background-color: #d2300b;
+    color: white;
+    display: flex;
+    flex-direction: unset;
+    align-items: flex-end;
+    padding: 16px;
+
+    .more-button-detail-info-container {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    .delete-button {
+        position: absolute;
+        bottom: 32px;
+        right: 32px;
+        color: white;
+    }
+
+    .contact-detail-info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100px;
+
+        h2 {
+            margin: 0;
+        }
+    }
+
+    .user-initials {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        color: white;
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 16px;
+    }
+}
+
+.address-card {
+    position: relative;
+    display: flex;
+    margin-top: 32px;
+
+    .more-button-adress-container {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+    }
+
+    mat-card-title {
+        padding: 16px 16px 0px 16px;
+    }
+}

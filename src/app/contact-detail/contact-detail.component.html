@@ -1,0 +1,47 @@
+<mat-card class="contact-detail-header">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="contactDetailsMenu"
+    class="more-button-detail-info-container"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #contactDetailsMenu="matMenu">
+    <button mat-menu-item (click)="openDialogEditContactDetails()">Edit Contact</button>
+  </mat-menu>
+
+  <div
+    class="user-initials"
+    [ngStyle]="{ 'background-color': contact.color }"
+  >
+    {{ contact.firstName[0] }}{{ contact.lastName[0] }}
+  </div>
+
+  <div class="contact-detail-info-container">
+    <h2>{{ contact.firstName }} {{ contact.lastName }}</h2>
+    <p>{{ contact.eMail }}</p>
+  </div>
+
+  <button mat-icon-button class="delete-button" (click)="deleteContact()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-card>
+
+<mat-card class="address-card">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="addressMenu"
+    class="more-button-adress-container"
+  >
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #addressMenu="matMenu">
+    <button mat-menu-item (click)="openDialogEditAddress()">Edit Address</button>
+  </mat-menu>
+
+  <mat-card-title>Address</mat-card-title>
+  <mat-card-content>
+    {{ contact.street }} <br />
+    {{ contact.zipCode }} {{ contact.city }}
+  </mat-card-content>
+</mat-card>

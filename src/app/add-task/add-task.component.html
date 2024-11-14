@@ -1,0 +1,26 @@
+<mat-card>
+  <h2>Tasks</h2>
+  
+  <table class="task-table">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Subtasks</th>
+    </tr>
+    <tr *ngFor="let task of allTasks">
+      <td>{{ task.taskTitle }}</td>
+      <td>{{ task.taskDescription }}</td>
+      <td>{{ task.taskDate | date:'shortDate' }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let subtask of task.taskSubTask">{{ subtask.name }}</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</mat-card>
+
+<button (click)="openDialog()" class="add-task-button" matTooltip="Add task" matTooltipHideDelay="500" mat-fab color="primary">
+  <mat-icon>add</mat-icon>
+</button>

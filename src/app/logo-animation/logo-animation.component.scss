@@ -1,0 +1,39 @@
+.logo-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; // Full viewport height
+    width: 100vw;
+
+    .background {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: red; /* Set background color for visibility */
+        transition: opacity 1.5s ease; /* Transition for opacity */
+        opacity: 1; /* Initial opacity */
+    }
+
+    #logo {
+        height: 50%; /* Initial height of the logo */
+        transition: height 1.5s ease, top 1.5s ease, left 1.5s ease; /* Transition for height and position */
+        transform: scale(1); /* Initial scale */
+    }
+
+    // Animation class
+    .animate {
+        .background {
+            opacity: 0; // Fade out background
+        }
+
+        #logo {
+            height: 48px; // Final height
+            position: absolute; // Fix position to top-left after animation
+            top: 16px; // Final position
+            left: 16px; // Final position
+        }
+    }
+}

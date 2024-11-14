@@ -1,0 +1,35 @@
+<mat-card>
+  <table class="contact-table">
+    <tr>
+      <th></th> <!-- For user initials -->
+      <th>NAME</th>
+      <th>EMAIL</th>
+      <th>ZIP CODE</th>
+      <th>CITY</th>
+      <th></th> <!-- For delete button -->
+    </tr>
+    <tr *ngFor="let contact of allContacts" style="cursor: pointer">
+      <td class="initials-column">
+        <div
+          class="user-initials"
+          [ngStyle]="{ 'background-color': contact.color }"
+        >
+          {{ contact.firstName[0] }}{{ contact.lastName[0] }}
+        </div>
+      </td>
+      <td (click)="navigateToDetail(contact.id)">{{ contact.firstName }} {{ contact.lastName }}</td>
+      <td (click)="navigateToDetail(contact.id)">{{ contact.eMail }}</td>
+      <td (click)="navigateToDetail(contact.id)">{{ contact.zipCode || 'N/A' }}</td>
+      <td (click)="navigateToDetail(contact.id)">{{ contact.city || 'N/A' }}</td>
+      <td>
+        <button mat-icon-button (click)="deleteContact(contact.id)" (click)="$event.stopPropagation()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+</mat-card>
+
+<button (click)="openDialog()" class="add-contact-button" matTooltip="Add contact" matTooltipHideDelay="500" mat-fab color="primary">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,0 +1,15 @@
+.task-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .subtask-section {
+    margin-top: 10px;
+  }
+
+  .add-task-button {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}
+

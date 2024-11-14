@@ -1,0 +1,55 @@
+<section class="dialog-content">
+    <h2 mat-dialog-title>Edit Address</h2>
+    <section mat-dialog-content>
+      <form #addressForm="ngForm">
+         
+          <div class="input-address-container">
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input
+                [disabled]="loading"
+                [(ngModel)]="contact.street"
+                [ngModelOptions]="{ standalone: true }"
+                matInput
+                placeholder="Street + House Nr."
+              />
+            </mat-form-field>
+          </div>
+  
+          <div class="input-location-container">
+            <mat-form-field appearance="outline">
+              <mat-label>ZIP Code</mat-label>
+              <input
+                [disabled]="loading"
+                [(ngModel)]="contact.zipCode"
+                [ngModelOptions]="{ standalone: true }"
+                matInput
+                placeholder="ZIP Code"
+              />
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline">
+              <mat-label>City</mat-label>
+              <input
+                [disabled]="loading"
+                [(ngModel)]="contact.city"
+                [ngModelOptions]="{ standalone: true }"
+                matInput
+                placeholder="City"
+              />
+            </mat-form-field>
+          </div>
+        
+      </form>
+    </section>
+  
+    <div class="add-contact-button-container" mat-dialog-actions>
+      <button mat-button (click)="dialogRef.close()">
+        Cancel
+      </button>
+  
+      <button (click)="saveContact()" mat-button cdkFocusInitial [disabled]="addressForm.invalid">
+        Save
+      </button>
+    </div>
+  </section>

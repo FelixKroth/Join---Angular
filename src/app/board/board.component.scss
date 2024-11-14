@@ -1,0 +1,127 @@
+.task-board {
+    width: 100%;
+    padding: 16px 0px 32px 0px;
+
+    .task {
+        background: red;
+        border-radius: 4px;
+        padding: 16px;
+        margin-bottom: 8px;
+    }
+    .task-category-container {
+        display: flex;
+        gap: 8px;
+    }
+
+    .task-category {
+        width: 24%; // 4 columns
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        h2 {
+            text-align: center;
+        }
+
+        .task-drop-zone {
+            min-height: 350px; // Minimum height for drop zone
+            border: 2px dashed #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #fff;
+        }
+    }
+
+    .task-card {
+        margin: 10px 0;
+    }
+
+    .task-details-modal-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .task-details-modal, .edit-task-modal {
+        width: 90%;
+        max-width: 600px; /* Adjust to your desired modal width */
+        max-height: 90%;
+        overflow-y: auto; /* To handle overflow for long content */
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.add-task-button {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+}
+
+.dropdown-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .dropdown-list {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    z-index: 1000;
+    width: 100%;
+    max-height: 200px; // Limit height of the dropdown
+    overflow-y: auto; // Enable scrolling
+  }
+  
+  .dropdown-item {
+    padding: 10px;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #f0f0f0; // Highlight on hover
+    }
+  }
+  
+  .arrow {
+    margin-left: auto; // Align arrow to the right
+    transition: transform 0.3s;
+  }
+  
+  .arrow.open {
+    transform: rotate(180deg); // Rotate arrow when open
+  }
+
+  .styled-dropdown {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+
+  .initials {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  

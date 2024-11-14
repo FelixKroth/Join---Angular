@@ -1,0 +1,128 @@
+/* app.component.scss */
+.mat-drawer-container {
+  height: 100vh;
+  flex: 1 1 auto;
+}
+
+.menu-icon {
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.sidenav {
+  width: 300px;
+  .inner-wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+.user-initials {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.menu-items, .menu-items-legal {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+      display: flex;
+      align-items: center;
+      padding: 0px 16px;
+      height: 48px;
+      cursor: pointer;
+
+      &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      mat-icon {
+          margin-right: 16px;
+      }
+  }
+}
+
+.logo-container {
+  padding: 0px 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+mat-toolbar,
+mat-toolbar-row {
+  min-height: 80px;
+  height: 80px;
+  cursor: pointer;
+  position: fixed;
+  z-index: 99;
+}
+
+.animation-container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(0, 3, 40);
+  animation: fadeOut 2s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Initial logo animation - centered on screen */
+#logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Start centered */
+  width: 500px; /* Initial width of the logo */
+  animation: moveToCorner 2s ease-in-out forwards;
+}
+
+@keyframes moveToCorner {
+  0% {
+    top: 50%; /* Centered vertically */
+    left: 50%; /* Centered horizontally */
+    width: 480px; /* Starting size */
+  }
+  100% {
+    top: 35px; /* Final position matching .logo-container */
+    left: 40px; /* Final position matching .logo-container */
+    width: 32px; /* Final width matching the logo in .logo-container */
+  }
+}
+
+/* Hide the animated logo after animation completes */
+.animate #logo {
+  opacity: 0;
+}
